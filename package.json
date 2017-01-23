@@ -1,0 +1,25 @@
+{
+  "name": "postgres-knex",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "express": "^4.14.0",
+    "knex": "^0.12.6",
+    "pg": "^6.1.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://snowcxt@github.com/snowcxt/postgres-knex.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/snowcxt/postgres-knex/issues"
+  },
+  "homepage": "https://github.com/snowcxt/postgres-knex#readme"
+}
