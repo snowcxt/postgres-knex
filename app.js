@@ -16,22 +16,25 @@ app.listen(3000, function() {
 
 function json_agg(query) {
     return knex
-        .from(query.as('t'))
-        .select(knex.raw('json_agg(t)'));
+        .select(knex.raw('json_agg(t)'))
+        .from(query.as('t'));
 }
 
 app.get('/', function(req, res) {
-    var attendees = json_agg(knex('student')
+    var attendees = json_agg(
+          knex
             .select('student.id', 'student.name')
-            .join('student__class', 'student__class.student', 'student.id')
+            .from('student')
+            .join('student__course', 'student__course.student', 'student.id')
             .where({
-                'student__class.class': knex.raw('class.id')
+                'student__course.course': knex.raw('course.id')
             })
         )
         .as('attendees');
 
-    knex('class')
+    knex
         .select('id', 'name', 'room', attendees)
+        .from('course')
         .then(function(results) {
             res.json(results);
         });
